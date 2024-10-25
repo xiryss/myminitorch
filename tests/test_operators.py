@@ -192,7 +192,7 @@ def test_sum_distribute(ls1: List[float], ls2: List[float]) -> None:
     Write a test that ensures that the sum of `ls1` plus the sum of `ls2`
     is the same as the sum of each element of `ls1` plus each element of `ls2`.
     """
-    assert_close(add(sum([52, 52]),sum([34, 34])),sum(addLists([52, 52],[34, 34])) )
+    assert_close(add(sum([52, 52]), sum([34, 34])), sum(addLists([52, 52], [34, 34])))
     # TODO: Implement for Task 0.3.
     # raise NotImplementedError('Need to implement for Task 0.3')
 

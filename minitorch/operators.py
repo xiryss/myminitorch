@@ -48,7 +48,7 @@ def eq(x: float, y: float) -> float:
 
 def max(x: float, y: float) -> float:
     "$f(x) =$ x if x is greater than y else y"
-    if(x > y):
+    if (x > y):
         return x
     return y
     raise NotImplementedError('Need to implement for Task 0.1')
@@ -57,7 +57,7 @@ def max(x: float, y: float) -> float:
 def is_close(x: float, y: float) -> float:
     "$f(x) = |x - y| < 1e-2$"
     # TODO: Implement for Task 0.1.
-    return abs(x-y) < 1e-2
+    return abs(x - y) < 1e-2
     raise NotImplementedError('Need to implement for Task 0.1')
 
 
@@ -74,7 +74,6 @@ def sigmoid(x: float) -> float:
     for stability.
     """
     # TODO: Implement for Task 0.1.
-    
     if (x >= 0):
         return 1 / (1 + math.exp(-x))
     else:
@@ -89,8 +88,7 @@ def relu(x: float) -> float:
     (See https://en.wikipedia.org/wiki/Rectifier_(neural_networks) .)
     """
     # TODO: Implement for Task 0.1.
-    
-    if(x >= 0):
+    if (x >= 0):
         return x
     return 0
     raise NotImplementedError('Need to implement for Task 0.1')
@@ -112,7 +110,6 @@ def exp(x: float) -> float:
 def log_back(x: float, d: float) -> float:
     r"If $f = log$ as above, compute $d \times f'(x)$"
     # TODO: Implement for Task 0.1.
-    
     return d / x
     raise NotImplementedError('Need to implement for Task 0.1')
 
@@ -126,16 +123,14 @@ def inv(x: float) -> float:
 
 def inv_back(x: float, d: float) -> float:
     r"If $f(x) = 1/x$ compute $d \times f'(x)$"
-    
-    return -d / (x*x)
+    return -d / (x * x)
     raise NotImplementedError('Need to implement for Task 0.1')
 
 
 def relu_back(x: float, d: float) -> float:
     r"If $f = relu$ compute $d \times f'(x)$"
     # TODO: Implement for Task 0.1.
-    
-    if(x>=0):
+    if (x >= 0):
         return d
     return 0
     raise NotImplementedError('Need to implement for Task 0.1')
@@ -225,7 +220,7 @@ def reduce(
          fn(x_1, x_0)))`
     """
     def res(ls: Iterable[float]):
-        if(len(ls) == 0):
+        if (len(ls) == 0):
             return start
         tmp = start
         for i in range(0, len(ls)):
