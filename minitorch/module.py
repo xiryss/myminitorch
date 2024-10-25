@@ -32,7 +32,6 @@ class Module:
     def train(self) -> None:
         "Set the mode of this module and all descendent modules to `train`."
         # TODO: Implement for Task 0.4.
-        
         self.training = True
         for i in self._modules.keys():
             self._modules[i].train()
@@ -41,7 +40,6 @@ class Module:
     def eval(self) -> None:
         "Set the mode of this module and all descendent modules to `eval`."
         # TODO: Implement for Task 0.4.
-        
         self.training = False
         for i in self._modules.keys():
             self._modules[i].eval()
