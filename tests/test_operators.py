@@ -115,7 +115,6 @@ def test_sigmoid(a: float) -> None:
     assert_close(sigmoid(0), 0.5)
     assert (lt(sigmoid(0), sigmoid(0.5)))
     assert (lt(sigmoid(-10), sigmoid(5)))
-        
     # TODO: Implement for Task 0.2.
     # raise NotImplementedError('Need to implement for Task 0.2')
 
