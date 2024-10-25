@@ -111,7 +111,7 @@ class Mul(ScalarFunction):
     @staticmethod
     def backward(ctx: Context, d_output: float) -> Tuple[float, float]:
         # TODO: Implement for Task 1.4.
-        (a,b) = ctx.saved_values
+        (a, b) = ctx.saved_values
         return operators.mul(d_output, b), operators.mul(d_output, a)
         raise NotImplementedError('Need to implement for Task 1.4')
 

@@ -19,7 +19,7 @@ def central_difference(f: Any, *vals: Any, arg: int = 0, epsilon: float = 1e-6) 
         arg : the number $i$ of the arg to compute the derivative
         epsilon : a small constant
 
-    Returns:    
+    Returns:
         An approximation of $f'_i(x_0, \ldots, x_{n-1})$
     """
     # TODO: Implement for Task 1.1.
