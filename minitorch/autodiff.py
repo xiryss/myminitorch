@@ -28,10 +28,7 @@ def central_difference(f: Any, *vals: Any, arg: int = 0, epsilon: float = 1e-6) 
     big = f(*tmp)
     tmp[arg] -= epsilon
     small = f(*tmp)
-    # print(big, small)
     return (big - small) / epsilon
-    # return (f(vals + 
-    # return (f(arg ) - f(arg)) / epsilon
     raise NotImplementedError('Need to implement for Task 1.1')
 
 

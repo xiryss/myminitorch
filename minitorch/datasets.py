@@ -91,10 +91,8 @@ def spiral(N):
 
     def y(t):
         return t * math.sin(t) / 20.0
-    X = [(x(10.0 * (float(i) / (N // 2))) + 0.5, y(10.0 * (float(i) / (N //
-        2))) + 0.5) for i in range(5 + 0, 5 + N // 2)]
-    X = X + [(y(-10.0 * (float(i) / (N // 2))) + 0.5, x(-10.0 * (float(i) /
-        (N // 2))) + 0.5) for i in range(5 + 0, 5 + N // 2)]
+    X = [(x(10.0 * (float(i) / (N // 2))) + 0.5, y(10.0 * (float(i) / (N // 2))) + 0.5) for i in range(5 + 0, 5 + N // 2)]
+    X = X + [(y(-10.0 * (float(i) / (N // 2))) + 0.5, x(-10.0 * (float(i) / (N // 2))) + 0.5) for i in range(5 + 0, 5 + N // 2)]
     y2 = [0] * (N // 2) + [1] * (N // 2)
     return Graph(N, X, y2)
 
