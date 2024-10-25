@@ -36,13 +36,13 @@ def neg(x: float) -> float:
 
 def lt(x: float, y: float) -> float:
     "$f(x) =$ 1.0 if x is less than y else 0.0"
-    return x < y
+    return float(x < y)
     raise NotImplementedError('Need to implement for Task 0.1')
 
 
 def eq(x: float, y: float) -> float:
     "$f(x) =$ 1.0 if x is equal to y else 0.0"
-    return x == y
+    return float(x == y)
     raise NotImplementedError('Need to implement for Task 0.1')
 
 
@@ -57,7 +57,7 @@ def max(x: float, y: float) -> float:
 def is_close(x: float, y: float) -> float:
     "$f(x) = |x - y| < 1e-2$"
     # TODO: Implement for Task 0.1.
-    return abs(x - y) < 1e-2
+    return float(abs(x - y) < 1e-2)
     raise NotImplementedError('Need to implement for Task 0.1')
 
 
@@ -90,7 +90,7 @@ def relu(x: float) -> float:
     # TODO: Implement for Task 0.1.
     if (x >= 0):
         return x
-    return 0
+    return 0.
     raise NotImplementedError('Need to implement for Task 0.1')
 
 
@@ -132,7 +132,7 @@ def relu_back(x: float, d: float) -> float:
     # TODO: Implement for Task 0.1.
     if (x >= 0):
         return d
-    return 0
+    return 0.
     raise NotImplementedError('Need to implement for Task 0.1')
 
 

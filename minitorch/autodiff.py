@@ -19,10 +19,19 @@ def central_difference(f: Any, *vals: Any, arg: int = 0, epsilon: float = 1e-6) 
         arg : the number $i$ of the arg to compute the derivative
         epsilon : a small constant
 
-    Returns:
+    Returns:    
         An approximation of $f'_i(x_0, \ldots, x_{n-1})$
     """
     # TODO: Implement for Task 1.1.
+    tmp = list(vals)
+    tmp[arg] += epsilon
+    big = f(*tmp)
+    tmp[arg] -= epsilon
+    small = f(*tmp)
+    # print(big, small)
+    return (big - small) / epsilon
+    # return (f(vals + 
+    # return (f(arg ) - f(arg)) / epsilon
     raise NotImplementedError('Need to implement for Task 1.1')
 
 
