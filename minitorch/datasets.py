@@ -98,7 +98,7 @@ def spiral(N):
 
 
 datasets = {
-    'Simple': simple, 
+    'Simple': simple,
     'Diag': diag,
     'Split': split,
     'Xor': xor,
