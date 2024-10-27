@@ -186,12 +186,14 @@ class Scalar:
         # TODO: Implement for Task 1.3.
         f = h.last_fn
         var = h.inputs
-        tmpcont = Context()
-        tmpcont.saved_values = tuple(var)
         res = []
-        bws = list(f._backward(tmpcont, d_output))
+        bws = f._backward(h.ctx, d_output)
+        bws=list(bws)
         for i in range(len(var)):
+            if var[i].is_constant():
+                continue
             res.append((var[i], bws[i]))
+        print('res =', res)
         return res
         raise NotImplementedError('Need to implement for Task 1.3')
 
@@ -219,13 +221,16 @@ def derivative_check(f: Any, *scalars: Scalar) -> None:
     """
     out = f(*scalars)
     out.backward()
-
+    print(f,scalars)
     err_msg = """
 Derivative check at arguments f(%s) and received derivative f'=%f for argument %d,
 but was expecting derivative f'=%f from central difference."""
+    fck = 0
     for i, x in enumerate(scalars):
         check = central_difference(f, *scalars, arg=i)
         print(str([x.data for x in scalars]), x.derivative, i, check)
+        print('fck =',fck)
+        fck+=1
         assert x.derivative is not None
         np.testing.assert_allclose(
             x.derivative,
