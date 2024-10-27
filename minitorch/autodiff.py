@@ -69,7 +69,7 @@ def topological_sort(variable: Variable) -> Iterable[Variable]:
     """
     used = set()
     topsort = []
-    
+
     def dfs(v: Variable):
         its = v.history.inputs
         used.add(v.unique_id)
@@ -111,6 +111,7 @@ def backpropagate(variable: Variable, deriv: Any) -> None:
                 else:
                     derivs[i.unique_id] = to_add
     # raise NotImplementedError('Need to implement for Task 1.4')
+
 
 @dataclass
 class Context:
