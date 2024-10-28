@@ -64,6 +64,7 @@ def to_index(ordinal: int, shape: Shape, out_index: OutIndex) -> None:
 
     """
     prd = int(prod(shape))
+    # print(len(out_index))
     for i in range(len(shape)):
         prd //= shape[i]
         out_index[i] = ordinal // prd

@@ -264,8 +264,13 @@ def tensor_map(
         in_shape: Shape,
         in_strides: Strides,
     ) -> None:
-        # TODO: Implement for Task 2.3.
-        raise NotImplementedError('Need to implement for Task 2.3')
+        for id in range(len(out)):
+            outid = np.zeros(len(out_shape), dtype = int)
+            to_index(id, out_shape, outid)
+            smallid = np.zeros(len(in_shape), dtype = int)
+            broadcast_index(outid, out_shape, in_shape, smallid)
+            posstorage = index_to_position(smallid, in_strides)
+            out[index_to_position(outid, out_strides)] = fn(in_storage[posstorage])
 
     return _map
 
@@ -310,7 +315,16 @@ def tensor_zip(
         b_strides: Strides,
     ) -> None:
         # TODO: Implement for Task 2.3.
-        raise NotImplementedError('Need to implement for Task 2.3')
+        for id in range(len(out)):
+            outid = np.zeros(len(out_shape), dtype = int)
+            to_index(id, out_shape, outid)
+            aid = np.zeros(len(a_shape), dtype = int)
+            broadcast_index(outid, out_shape, a_shape, aid)
+            bid = np.zeros(len(b_shape), dtype = int)
+            broadcast_index(outid, out_shape, b_shape, bid)
+            fval = a_storage[index_to_position(aid, a_strides)]
+            sval = b_storage[index_to_position(bid, b_strides)]
+            out[index_to_position(outid, out_strides)] = fn(fval, sval)
 
     return _zip
 
@@ -340,8 +354,14 @@ def tensor_reduce(
         a_strides: Strides,
         reduce_dim: int,
     ) -> None:
-        # TODO: Implement for Task 2.3.
-        raise NotImplementedError('Need to implement for Task 2.3')
+        for id in range(len(a_storage)):
+            aindex = np.zeros(len(a_shape), dtype = int)
+            to_index(id, a_shape, aindex)
+            outindex = np.zeros(len(out_shape), dtype = int)
+            broadcast_index(aindex, a_shape, out_shape, outindex)
+            outpos = index_to_position(outindex, out_strides)
+            apos = index_to_position(aindex, a_strides)
+            out[outpos] = fn(out[outpos], a_storage[apos])
 
     return _reduce
 
