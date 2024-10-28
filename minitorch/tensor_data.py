@@ -93,7 +93,7 @@ def broadcast_index(
     """
     for i in range(len(shape) - 1, -1, -1):
         offset = len(shape) - i
-        if(shape[i] == 1):
+        if (shape[i] == 1):
             out_index[i] = 0
         else:
             out_index[i] = big_index[len(big_shape) - offset]
@@ -121,7 +121,7 @@ def shape_broadcast(shape1: UserShape, shape2: UserShape) -> UserShape:
         offset = len(shape2) - i
         here2 = shape2[i]
         here1 = 0
-        if(len(shape1) - offset >= 0):
+        if (len(shape1) - offset >= 0):
             here1 = shape1[len(shape1) - offset]
         else:
             here1 = 1
