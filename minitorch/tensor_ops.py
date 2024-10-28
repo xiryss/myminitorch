@@ -265,9 +265,9 @@ def tensor_map(
         in_strides: Strides,
     ) -> None:
         for id in range(len(out)):
-            outid = np.zeros(len(out_shape), dtype = int)
+            outid = np.zeros(len(out_shape), dtype=int)
             to_index(id, out_shape, outid)
-            smallid = np.zeros(len(in_shape), dtype = int)
+            smallid = np.zeros(len(in_shape), dtype=int)
             broadcast_index(outid, out_shape, in_shape, smallid)
             posstorage = index_to_position(smallid, in_strides)
             out[index_to_position(outid, out_strides)] = fn(in_storage[posstorage])
@@ -316,11 +316,11 @@ def tensor_zip(
     ) -> None:
         # TODO: Implement for Task 2.3.
         for id in range(len(out)):
-            outid = np.zeros(len(out_shape), dtype = int)
+            outid = np.zeros(len(out_shape), dtype=int)
             to_index(id, out_shape, outid)
-            aid = np.zeros(len(a_shape), dtype = int)
+            aid = np.zeros(len(a_shape), dtype=int)
             broadcast_index(outid, out_shape, a_shape, aid)
-            bid = np.zeros(len(b_shape), dtype = int)
+            bid = np.zeros(len(b_shape), dtype=int)
             broadcast_index(outid, out_shape, b_shape, bid)
             fval = a_storage[index_to_position(aid, a_strides)]
             sval = b_storage[index_to_position(bid, b_strides)]
@@ -355,9 +355,9 @@ def tensor_reduce(
         reduce_dim: int,
     ) -> None:
         for id in range(len(a_storage)):
-            aindex = np.zeros(len(a_shape), dtype = int)
+            aindex = np.zeros(len(a_shape), dtype=int)
             to_index(id, a_shape, aindex)
-            outindex = np.zeros(len(out_shape), dtype = int)
+            outindex = np.zeros(len(out_shape), dtype=int)
             broadcast_index(aindex, a_shape, out_shape, outindex)
             outpos = index_to_position(outindex, out_strides)
             apos = index_to_position(aindex, a_strides)
