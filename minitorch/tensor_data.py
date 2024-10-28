@@ -91,12 +91,12 @@ def broadcast_index(
     Returns:
         None
     """
-    for i in range(len(shape)-1,-1,-1):
+    for i in range(len(shape) - 1, -1, -1):
         offset = len(shape) - i
-        if(shape[i] ==1 ):
-            out_index[i]=0
+        if(shape[i] == 1):
+            out_index[i] = 0
         else:
-            out_index[i] = big_index[len(big_shape)-offset]
+            out_index[i] = big_index[len(big_shape) - offset]
     # TODO: Implement for Task 2.2.
 
 
@@ -114,20 +114,20 @@ def shape_broadcast(shape1: UserShape, shape2: UserShape) -> UserShape:
     Raises:
         IndexingError : if cannot broadcast
     """
-    if(len(shape1) > len(shape2)):
-        shape1,shape2=shape2,shape1
-    result =[0] *len(shape2)
-    for i in range(len(shape2)-1,-1,-1):
-        offset=len(shape2)-i
+    if (len(shape1) > len(shape2)):
+        shape1, shape2 = shape2, shape1
+    result = [0] * len(shape2)
+    for i in range(len(shape2) - 1, -1, -1):
+        offset = len(shape2) - i
         here2 = shape2[i]
         here1 = 0
-        if(len(shape1)-offset>=0):
-            here1=shape1[len(shape1)-offset]
+        if(len(shape1) - offset >= 0):
+            here1 = shape1[len(shape1) - offset]
         else:
             here1 = 1
-        if( not(here1==here2 or here1==1 or here2==1)):
+        if (not (here1 == here2 or here1 == 1 or here2 == 1)):
             raise IndexingError
-        result[i]=max(here1,here2)
+        result[i] = max(here1, here2)
     return tuple(result)
     # TODO: Implement for Task 2.2.
     raise NotImplementedError('Need to implement for Task 2.2')
