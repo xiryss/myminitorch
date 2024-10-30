@@ -71,8 +71,14 @@ def topological_sort(variable: Variable) -> Iterable[Variable]:
     topsort = []
 
     def dfs(v: Variable):
-        its = v.history.inputs
+        if v.is_constant():
+            return
         used.add(v.unique_id)
+        if v.is_leaf():
+            # assert(0)
+            topsort.append(v)
+            return
+        its = v.history.inputs
         for i in its:
             if i.unique_id in used:
                 continue

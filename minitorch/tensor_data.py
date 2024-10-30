@@ -64,13 +64,10 @@ def to_index(ordinal: int, shape: Shape, out_index: OutIndex) -> None:
 
     """
     prd = int(prod(shape))
-    # print(len(out_index))
     for i in range(len(shape)):
         prd //= shape[i]
         out_index[i] = ordinal // prd
         ordinal %= prd
-    # TODO: Implement for Task 2.1.
-    # raise NotImplementedError('Need to implement for Task 2.1')
 
 
 def broadcast_index(
@@ -173,8 +170,11 @@ class TensorData:
         self._shape = array(shape)
         self.strides = strides
         self.dims = len(strides)
+        # print('before prod')
         self.size = int(prod(shape))
+        # print('after prod')
         self.shape = shape
+        # print('initiated')
         assert len(self._storage) == self.size
 
     def to_cuda_(self) -> None:  # pragma: no cover
@@ -211,6 +211,8 @@ class TensorData:
             shape = (1,)
 
         # Check for errors
+        # print('MYSHAPE = ', self.shape)
+        # print('MYVAL = ',self._storage)
         if aindex.shape[0] != len(self.shape):
             raise IndexingError(f"Index {aindex} must be size of {self.shape}.")
         for i, ind in enumerate(aindex):
@@ -255,14 +257,8 @@ class TensorData:
         assert list(sorted(order)) == list(
             range(len(self.shape))
         ), f"Must give a position to each dimension. Shape: {self.shape} Order: {order}"
-
-        # TODO: Implement for Task 2.1.
-        # tmpshape = []
-        # tmpstride = []
-        # for x in order:
-        #     tmpshape.append(self._shape[x])
-        #     tmpstride.append(self._strides[x])
-        return TensorData(self._storage, tuple(self._shape[[x for x in order]]), tuple(self._strides[[x for x in order]]))
+        ret = TensorData(self._storage, tuple(self.shape[x] for x in order), tuple(self.strides[x] for x in order))
+        return ret
         raise NotImplementedError('Need to implement for Task 2.1')
 
     def to_string(self) -> str:
