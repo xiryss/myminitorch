@@ -124,7 +124,7 @@ class Sigmoid(Function):
     def backward(ctx: Context, grad_output: Tensor) -> Tensor:
         # TODO: Implement for Task 2.4.
         (t1,) = ctx.saved_values
-        return t1.f.add_zip(t1.f.sigmoid_map(t1), t1.f.neg_map(t1.f.mul_zip(t1.f.sigmoid_map(t1), t1.f.sigmoid_map(t1))))
+        return t1.f.mul_zip(grad_output, t1.f.add_zip(t1.f.sigmoid_map(t1), t1.f.neg_map(t1.f.mul_zip(t1.f.sigmoid_map(t1), t1.f.sigmoid_map(t1)))))
         raise NotImplementedError('Need to implement for Task 2.4')
 
 
